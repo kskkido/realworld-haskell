@@ -1,0 +1,10 @@
+.spago
+node_modules
+output
+.env
+.DS_Store
+/result-*
+/result
+.direnv
+dist-newstyle
+tmp

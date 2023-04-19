@@ -1,0 +1,166 @@
+cabal-version:      2.4
+name:               honduit-api
+version:            0.1.0.0
+author:             Keisuke Kido
+maintainer:         kekido@moneytree.jp
+extra-source-files: CHANGELOG.md
+
+library
+    exposed-modules:
+      Honduit.Api
+      Honduit.Api.Type
+    hs-source-dirs: src
+    default-language: Haskell2010
+    default-extensions:
+      BlockArguments
+      DataKinds
+      DeriveAnyClass
+      DeriveGeneric
+      DuplicateRecordFields
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NoFieldSelectors
+      OverloadedLabels
+      OverloadedStrings
+      OverloadedRecordDot
+      StrictData
+      ExtendedDefaultRules
+      ScopedTypeVariables
+      QuasiQuotes
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      TupleSections
+    ghc-options: -Wall -Wcompat -Widentities -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+    build-depends:
+        aeson
+      , aeson-pretty
+      , aeson-qq
+      , async
+      , base
+      , butcher
+      , bytestring
+      , case-insensitive
+      , cookie
+      , containers
+      , directory
+      , email-validate
+      , exceptions
+      , extra
+      , filepath
+      , hashable
+      , hedis
+      , hslogger
+      , http-api-data
+      , http-client
+      , http-conduit
+      , http-media
+      , http-types
+      , ini
+      , jose == 0.9
+      , lens
+      , lucid
+      , lucid-svg
+      , mime-types
+      , mtl
+      , network
+      , optparse-applicative
+      , parsec
+      , postgresql-simple
+      , process
+      , regex-tdfa
+      , retry
+      , rio
+      , scotty
+      , serialise
+      , servant
+      , servant-server
+      , split
+      , stm
+      , text
+      , time
+      , transformers
+      , typed-process
+      , unordered-containers
+      , utf8-string
+      , validation
+      , wai
+      , wai-cors
+      , wai-middleware-static
+      , warp
+      , yaml
+
+executable honduit-api-exe
+    main-is: Main.hs
+    hs-source-dirs: app
+    default-language: Haskell2010
+    default-extensions:
+      BlockArguments
+      DeriveAnyClass
+      DeriveGeneric
+      DuplicateRecordFields
+      LambdaCase
+      NoImplicitPrelude
+      NoFieldSelectors
+      OverloadedLabels
+      OverloadedStrings
+      OverloadedRecordDot
+      StrictData
+      ExtendedDefaultRules
+      ScopedTypeVariables
+      QuasiQuotes
+      TypeApplications
+      TupleSections
+    ghc-options: -Wall -Wcompat -Widentities -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+    build-depends:
+        aeson
+      , aeson-pretty
+      , aeson-qq
+      , async
+      , base
+      , butcher
+      , bytestring
+      , case-insensitive
+      , containers
+      , directory
+      , exceptions
+      , extra
+      , filepath
+      , hashable
+      , hedis
+      , honduit-api
+      , hslogger
+      , http-client
+      , http-conduit
+      , http-types
+      , ini
+      , lens
+      , lucid
+      , mime-types
+      , mtl
+      , network
+      , optparse-applicative
+      , parsec
+      , postgresql-simple
+      , process
+      , regex-tdfa
+      , retry
+      , rio
+      , scotty
+      , serialise
+      , servant
+      , servant-server
+      , split
+      , stm
+      , text
+      , time
+      , transformers
+      , typed-process
+      , unordered-containers
+      , utf8-string
+      , wai
+      , wai-cors
+      , wai-middleware-static
+      , warp
+      , yaml

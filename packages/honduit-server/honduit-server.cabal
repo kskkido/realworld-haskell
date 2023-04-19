@@ -1,0 +1,256 @@
+cabal-version:      2.4
+name:               honduit-server
+version:            0.1.0.0
+author:             Keisuke Kido
+maintainer:         kekido@moneytree.jp
+extra-source-files: CHANGELOG.md
+
+library
+    exposed-modules:
+      Honduit.Interpreter.App
+      Honduit.Interpreter.App.Type
+      Honduit.Server
+      Honduit.Core.Type
+    other-modules:
+      Honduit.Core.ArticleFeedFilter
+      Honduit.Core.FieldValidationRule
+      Honduit.Core.FieldValidator
+      Honduit.Core.PaginationMetadata
+      Honduit.Core.Slug
+      Honduit.Core.Capability.Repository
+      Honduit.Core.Capability.ArticleEditorForm
+      Honduit.Core.Capability.CommentCreateForm
+      Honduit.Core.Capability.LoginForm
+      Honduit.Core.Capability.RegisterForm
+      Honduit.Core.Capability.Paginator
+      Honduit.Core.Capability.Server
+      Honduit.Core.Capability.UserSettingsForm
+      Honduit.Auth.Jwt
+      Honduit.Auth.Jwt.Type
+      Honduit.Server.Api
+      Honduit.Interpreter.View
+      Honduit.Interpreter.View.Type
+      Honduit.View.Template.Page.Article
+      Honduit.View.Template.Page.ArticleCreate
+      Honduit.View.Template.Page.ArticleUpdate
+      Honduit.View.Template.Page.Home
+      Honduit.View.Template.Page.Login
+      Honduit.View.Template.Page.NotFound
+      Honduit.View.Template.Page.Profile
+      Honduit.View.Template.Page.Register
+      Honduit.View.Template.Page.UserSettings
+      Honduit.View.Template.View.Article
+      Honduit.View.Template.View.ArticleCreate
+      Honduit.View.Template.View.ArticleUpdate
+      Honduit.View.Template.View.Home
+      Honduit.View.Template.View.Login
+      Honduit.View.Template.View.Profile
+      Honduit.View.Template.View.Register
+      Honduit.View.Template.View.UserSettings
+      Honduit.View.Template.Layout.Body
+      Honduit.View.Template.Layout.Head
+      Honduit.View.Template.Fragment.ArticleCommentSection
+      Honduit.View.Template.Fragment.ArticleFavoriteCounter
+      Honduit.View.Template.Fragment.ArticlePreviewFavoriteCounter
+      Honduit.View.Template.Fragment.ArticleMeta
+      Honduit.View.Template.Fragment.ArticlePreview
+      Honduit.View.Template.Fragment.HomeArticleFeed
+      Honduit.View.Template.Fragment.ProfileFollowButton
+      Honduit.View.Template.Fragment.ProfileArticleFeed
+      Honduit.View.Template.Component.ArticleCommentSection
+      Honduit.View.Template.Component.ArticleEditorForm
+      Honduit.View.Template.Component.ArticleFeed
+      Honduit.View.Template.Component.ArticleFavoriteCounter
+      Honduit.View.Template.Component.ArticlePreview
+      Honduit.View.Template.Component.ArticlePreviewFavoriteCounter
+      Honduit.View.Template.Component.ArticleMeta
+      Honduit.View.Template.Component.FormFieldValidation
+      Honduit.View.Template.Component.LoginForm
+      Honduit.View.Template.Component.ProfileFollowButton
+      Honduit.View.Template.Component.RegisterForm
+      Honduit.View.Template.Component.UserSettingsForm
+      Honduit.View.Template.Component.Pagination
+      Honduit.View.Template.Component.TagsInput
+      Control.Monad.Except.Extension
+      Data.Maybe.Extension
+      Data.Time.Calendar.Day.Extension
+      Data.Time.Clock.UTCTime.Extension
+      Database.PostgreSQL.Simple.Extension
+      Lucid.Extension
+      Lucid.Htmx.Extension
+      Lucid.Alpine.Extension
+      Servant.API.Extension
+    hs-source-dirs: src
+    default-language: Haskell2010
+    default-extensions:
+      BlockArguments
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DuplicateRecordFields
+      FlexibleContexts
+      FlexibleInstances
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NoFieldSelectors
+      OverloadedLabels
+      OverloadedStrings
+      OverloadedRecordDot
+      RankNTypes
+      StrictData
+      ExtendedDefaultRules
+      ScopedTypeVariables
+      QuasiQuotes
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      TupleSections
+    ghc-options: -Wall -Wcompat -Widentities -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+    build-depends:
+        aeson
+      , aeson-pretty
+      , aeson-qq
+      , async
+      , attoparsec
+      , base
+      , butcher
+      , bytestring
+      , case-insensitive
+      , cookie
+      , containers
+      , data-has
+      , directory
+      , email-validate
+      , exceptions
+      , extra
+      , filepath
+      , hashable
+      , hedis
+      , honduit-api
+      , hslogger
+      , http-api-data
+      , http-client
+      , http-conduit
+      , http-media
+      , http-types
+      , ini
+      , jose == 0.9
+      , lens
+      , lucid
+      , lucid-svg
+      , mime-types
+      , monad-time
+      , mtl
+      , network
+      , optparse-applicative
+      , parsec
+      , postgresql-simple
+      , process
+      , regex-tdfa
+      , retry
+      , rio
+      , scotty
+      , serialise
+      , servant
+      , servant-client
+      , servant-server
+      , split
+      , stm
+      , text
+      , time
+      , transformers
+      , typed-process
+      , unordered-containers
+      , utf8-string
+      , validation
+      , wai
+      , wai-cors
+      , wai-middleware-static
+      , warp
+      , yaml
+
+executable honduit-server-exe
+    main-is: Main.hs
+    hs-source-dirs: app
+    default-language: Haskell2010
+    default-extensions:
+      BlockArguments
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DuplicateRecordFields
+      FlexibleContexts
+      FlexibleInstances
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NoFieldSelectors
+      OverloadedLabels
+      OverloadedStrings
+      OverloadedRecordDot
+      RankNTypes
+      StrictData
+      ExtendedDefaultRules
+      ScopedTypeVariables
+      QuasiQuotes
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      TupleSections
+    ghc-options: -Wall -Wcompat -Widentities -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+    build-depends:
+        aeson
+      , aeson-pretty
+      , aeson-qq
+      , async
+      , base
+      , butcher
+      , bytestring
+      , case-insensitive
+      , containers
+      , directory
+      , exceptions
+      , extra
+      , filepath
+      , hashable
+      , hedis
+      , honduit-server
+      , hslogger
+      , http-client
+      , http-conduit
+      , http-types
+      , ini
+      , lens
+      , lucid
+      , mime-types
+      , mtl
+      , network
+      , optparse-applicative
+      , parsec
+      , postgresql-simple
+      , process
+      , regex-tdfa
+      , retry
+      , rio
+      , scotty
+      , serialise
+      , servant
+      , servant-server
+      , split
+      , stm
+      , text
+      , time
+      , transformers
+      , typed-process
+      , unordered-containers
+      , utf8-string
+      , wai
+      , wai-cors
+      , wai-middleware-static
+      , warp
+      , yaml

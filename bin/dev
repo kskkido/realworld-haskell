@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function main() {
+  BASE_DIRECTORY=$(dirname "$0")
+  ROOT_DIRECTORY="$BASE_DIRECTORY/.."
+  cd ${ROOT_DIRECTORY}
+  source configs/local/.env
+  SERVER_FILES=$(find packages/honduit-server/{src,app} -name '*.hs')
+  for FILE in $SERVER_FILES; do
+    FILES="$FILES"$'\n'"$FILE"
+  done
+  echo "$FILES" | entr -d cabal new-run packages/honduit-server
+}
+
+main $*
+

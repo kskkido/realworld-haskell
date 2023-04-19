@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function main() {
+  BASE_DIRECTORY=$(dirname "$0")
+  ROOT_DIRECTORY="$BASE_DIRECTORY/.."
+  cd ${ROOT_DIRECTORY}
+  source configs/local/.env
+  TEMPLATE_FILES=$(find packages/honduit-server/src/Honduit/Server/Templates -name "*")
+  ASSET_FILES=$(find packages/honduit-web-assets/src -name "*")
+  for FILE in $TEMPLATE_FILES $ASSET_FILES; do
+    FILES="$FILES"$'\n'"$FILE"
+  done
+  echo "$FILES" | entr npm --prefix packages/honduit-web-assets run build
+}
+
+main $*

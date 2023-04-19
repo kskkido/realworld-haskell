@@ -1,0 +1,17 @@
+%syntax-version=1.0.0
+%project=honduit
+
+schema 2023-09-28T06:09:00Z kskkido <kskkido.dev@gmail.com> # Add app schema
+users [schema] 2023-09-28T06:16:28Z kskkido <kskkido.dev@gmail.com> # Add users
+user_auth_credentials [schema users] 2023-09-28T06:25:07Z kskkido <kskkido.dev@gmail.com> # Add user_auth_credentials table
+user_profiles [schema users] 2023-09-28T06:27:40Z kskkido <kskkido.dev@gmail.com> # Add user_profiles table
+user_profile_followers [schema user_profiles] 2023-09-28T06:30:36Z kskkido <kskkido.dev@gmail.com> # Add user_profile_followers table
+tags [schema] 2023-09-28T06:32:27Z kskkido <kskkido.dev@gmail.com> # Add tags table
+articles [schema user_profiles] 2023-09-28T06:34:07Z kskkido <kskkido.dev@gmail.com> # Add articles table
+article_tags [schema articles tags] 2023-09-28T06:38:16Z kskkido <kskkido.dev@gmail.com> # Add article_tags
+article_favorites [schema articles user_profiles] 2023-09-28T06:43:40Z kskkido <kskkido.dev@gmail.com> # Add article_favorites table
+comments [schema user_profiles] 2023-09-28T06:46:43Z kskkido <kskkido.dev@gmail.com> # Add comments table
+article_comments [schema articles comments] 2023-09-28T06:49:54Z kskkido <kskkido.dev@gmail.com> # Add article_comments
+@v1 2023-09-29T01:45:02Z kskkido <kskkido.dev@gmail.com> # Tag v1
+comments [comments@v1] 2023-09-29T01:48:04Z kskkido <kskkido.dev@gmail.com> # Update comments
+@v2 2023-09-29T01:52:24Z kskkido <kskkido.dev@gmail.com> # Tag v2

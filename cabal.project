@@ -1,0 +1,4 @@
+packages:
+  packages/honduit-api/
+  packages/honduit-server/
+
